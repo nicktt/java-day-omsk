@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html data-savefrom-tab-data="{&quot;module&quot;:&quot;lm&quot;,&quot;tooltip&quot;:&quot;Links found: 0&quot;}"
+      style="height: 100%;" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Java8 &lt; Scala</title>
+    <meta name="generator" content="Hovercraft! 1.0 http://regebro.github.com/hovercraft">
+    <link rel="stylesheet" href="files/hovercraft_002.css" media="all">
+    <link rel="stylesheet" href="files/impressConsole.css" media="all">
+    <link rel="stylesheet" href="files/highlight.idea.css" media="all">
+    <link rel="stylesheet" href="files/hovercraft.css" media="screen,projection">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="files/prettify/run_prettify.js?autoload=true&amp;lang=scala" defer="defer"></script>
+</head>
+<body data-savefrom-link-count="1" style="height: 100%; overflow: hidden;"
+      class="impress-supported impress-enabled impress-on-step-1">
+
+<div style="position: absolute; transform-origin: left top 0px; transition: all 0ms ease-in-out 0ms; transform-style: preserve-3d; top: 50%; left: 50%; transform: perspective(1000px) scale(1);"
+     id="impress" data-transition-duration="1000">
+
+    <div style="position: absolute; transform-origin: left top 0px; transition: all 0ms ease-in-out 0ms; transform-style: preserve-3d; transform: rotateZ(0deg) rotateY(0deg) rotateX(0deg) translate3d(0px, 0px, 0px);">
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); transform-style: preserve-3d;"
+             id="step-0" class="step active present" step="0" data-x="0" data-y="0">
+            <!--<a href="http://www.nljug.org/jfall/session/live-coding-java-8-urs-peter/33/">Live coding session</a>-->
+            <!--<h2> <em>fun!</em></h2>-->
+            <h1>Почему Java 8 не вытеснит Scala</h1>
+            <br />
+            <div class="about-me">
+                <p>Линкер Николай</p>
+                <p><img width="170" height="58" src="files/tt-logo.png" /></p>
+            </div>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(1600px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); transform-style: preserve-3d;"
+             id="step-1" class="step future" step="1" data-x="1600" data-y="0">
+            <h1>Лямбды - это ещё не всё ФП</h1>
+            <h2>ФП - это хорошо</h2>
+            <!--?prettify lang=java?-->
+            <pre class="prettyprint code">
+    int i = 0;
+    i = i++ + ++i;
+
+    // vs
+
+    final int j = 0;
+    final int k = j + 2;
+            </pre>
+            <em class="notes">Чему равно i? Откуда такая уверенность?</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(3200px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); transform-style: preserve-3d;"
+             id="step-2" class="step future" step="2" data-x="3200" data-y="0">
+            <h1>И всё-таки что такого в Scala?</h1>
+            <ul class="fp-list">
+                <li>Всё есть выражение</li>
+                <li>Функции как первоклассные значения</li>
+                <li>Алгебраические типы данных и сопоставление по образцу</li>
+                <li>Функциональные структуры данных</li>
+                <li>Ленивые вычисления</li>
+                <li>Вывод типов </li>
+                <li>Макросы</li>
+                <li>Оптимизации: хвостовая рекурсия и больше</li>
+            </ul>
+            <ul>
+                <li>Обобщённое программирование</li>
+                <li>Scala быстрее развивается</li>
+                <li>Scala портабельнее</li>
+                <li>Scala богатый источник новых идей</li>
+            </ul>
+            <em class="notes">Cлова для поиска, как на ладони :-)</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(4800px, -1000px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); transform-style: preserve-3d;"
+             id="step-3" class="step future" step="3" data-x="4800" data-y="0">
+            <h2>Вкратце про ФП</h2>
+            <h3>Всё есть выражение</h3>
+<pre class="prettyprint">
+    // заглушка
+    <span class="hov">def schedule(period: Long): List[Job] = ???</span>
+
+    // определение функций, которые принимают почти всё
+    trait Iterable[A, Container[_]] {
+        <span class="hov">def map [B] (f : A ⇒ B) : Container [B]</span>
+        <span class="hov">def filter (p : A ⇒ Boolean) : Container [A]</span>
+    }
+    // аргументы могут быть какие-угодно
+    <span class="hov">container.map(Console.println)</span>
+    // return не нужен
+    def fun() = { "Hello" }
+</pre>
+            <em class="notes">В Java почти все конструкции - стейтменты</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(4800px, 1000px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); transform-style: preserve-3d;"
+             id="step-5" class="step future" step="5" data-y="1000" data-x="4800">
+            <h2>Вкратце про ФП</h2>
+            <h3>Функции как первоклассные значения</h3>
+            <pre class="prettyprint">
+// принимать и возвращать
+<span class="hov">def flip[A1, A2, B](f: A1⇒A2⇒B): A2⇒A1⇒B = {
+    x1 ⇒ x2 ⇒ f(x2)(x1) // анонимный экземпляр
+}</span>
+// записать в переменную
+val f0 = <span class="hov">(x: Int) ⇒ (y: String) ⇒ y * x</span>
+// частично применить (карринг)
+val f1 = <span class="hov">flip(f0)</span>("Scala!")
+println(<span class="hov">f1(2)</span>) // выводит "Scala!Scala!"
+            </pre>
+            <em class="notes"></em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(4800px, 2000px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-6" class="step future" step="6" data-x="4800" data-y="2000" data-rotate-z="90">
+            <h2>Вкратце про ФП</h2>
+            <h3>Функции как первоклассные значения в Java 8</h3>
+            <pre class="prettyprint">
+// принимать и возвращать
+<span class="hov">public static &lt;T, U, R> Function&lt;U, Function&lt;T, R>> flip(Function&lt;T, Function&lt;U, R>> f) {
+    return u -> t -> f.apply(t).apply(u);
+}</span>
+// записать в переменную
+<span class="hov">MyFunction&lt;Int, Function&lt;String, String>></span> f0 = t -> u -> multiply(u, t)
+// частично применить (карринг)
+MyFunction&lt;Integer, String> f1 = <span class="hov">flip(f0::apply).apply("Java8")</span>;
+System.out.println(<span class="hov">f1.apply(2)</span>);// выводит "Java8Java8"
+            </pre>
+            <em class="notes">Неудобно, нет функциональных типов, несовместимость интерфейсов, комбинаторный взрыв интерфейсов</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(4800px, 2500px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(90deg) scale(0.1); transform-style: preserve-3d;"
+             id="step-7" class="step future" step="7" data-x="5800" data-y="2500" data-scale="0.1" data-rotate-z="90">
+            <h2>Вкратце про ФП</h2>
+            <h3>Алгебраические типы и сопоставление по образцу</h3>
+            <pre class="prettyprint code">
+// data Expr = Var String | Number Double | UnOp String Expr | BinOp String Expr Expr
+<span class="hov">sealed abstract class Expr</span>
+case class Var(name: String) <span class="hov">extends Expr</span>
+case class Number(num: Double) <span class="hov">extends Expr</span>
+case class UnOp(operator: String, arg: Expr) <span class="hov">extends Expr</span>
+case class BinOp(operator: String,
+                 left: Expr, right: Expr) <span class="hov">extends Expr</span>
+
+val tree = <span class="hov">BinOp("*", Var("a"), Number(0))</span>
+
+// функция упрощения выражения
+def simplify(expr: Expr): Expr = expr <span class="hov">match</span> {
+    case BinOp("*", e, Number(1))        ⇒ simplify(e)
+    <span class="hov">case BinOp("*", e, Number(0))        ⇒ Number(0)</span>
+    case BinOp(op, Number(x), Number(y)) ⇒ calc(op, x, y) // инлайнинг!
+    ...
+}
+            </pre>
+            <em class="notes">АТД эмулируются в Java с помощью final, наследования
+                и copy-paste. Паттерн-матчинга нет</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(4000px, 2500px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-8" class="step future" step="8" data-x="4000" data-scale="1" data-y="2500" data-rotate-z="90">
+            <h2>Вкратце про ФП</h2>
+            <h3>Функциональные структуры данных</h3>
+            <img src="files/functional-tree.png" width="438" height="415" />
+            <ul>
+                <li>Purely Functional Data Structures, Chris Okasaki</li>
+                <li><a href="http://cstheory.stackexchange.com/questions/1539/whats-new-in-purely-functional-data-structures-since-okasaki">What's new in purely functional data structures since Okasaki?</a></li>
+            </ul>
+            <em class="notes">В Java все коллекции изменяемые по-умолчанию.
+                Использовать сторонние библиотеки коллекций. Неизменяемость на уровне соглашения.</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(3200px, 2500px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-9" class="step future" step="9" data-x="3200" data-y="3500" data-scale="1" data-rotate-z="90">
+            <h2>Вкратце про ФП</h2>
+            <h3>Ленивые вычисления</h3>
+            <img src="files/lazy-eval.png" width="303" height="204" />
+            <pre class="prettyprint">
+    // ленивая инициализация
+    lazy val connection = openConnection(...)
+
+    // передача by name
+    def delayed(t: ⇒ String) = println(t)
+    // вызов ничем не отличается от обычного
+    delayed("This " + a + " takes too long")
+
+    // вычисления на ленивых списках
+    val naturals = Stream.from(0)          // 0, 1, 2, ...
+    val odds     = naturals.map(_ * 2 + 1) // 1, 3, 5, ...
+    val inverses = odds.map(1.0 / _)       // 1/1, 1/3, 1/5, ...
+    val theSum = products.take(100).sum
+            </pre>
+            <em class="notes">Для применения ленивых вычислений
+                желательна поддержка языка</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(3200px, 4900px, 0px) rotateX(180deg) rotateY(0deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-11" class="step future" step="11" data-x="3200" data-y="4900" data-scale="1" data-rotate-z="90"
+             data-rotate-x="180">
+            <h2>Вкратце про ФП *</h2>
+            <h3>Вывод типов</h3>
+            <pre class="prettyprint">
+// WARNING - не пытайтесь это прочесть
+final HAppend&lt;HNil, HCons&lt;Double, HCons&lt;String,
+    HCons&lt;Integer[], HNil>>>, HCons&lt;Double,
+    HCons&lt;String, HCons&lt;Integer[], HNil>>>> zero = append();
+final HAppend&lt;HCons&lt;Boolean, HNil>, HCons&lt;Double,
+    HCons&lt;String, HCons&lt;Integer[], HNil>>>, HCons&lt;Boolean,
+    HCons&lt;Double, HCons&lt;String, HCons&lt;Integer[],
+    HNil>>>>> one = append(zero);
+final HAppend&lt;HCons&lt;Integer, HCons&lt;Boolean, HNil>>,
+    HCons&lt;Double, HCons&lt;String, HCons&lt;Integer[], HNil>>>,
+    HCons&lt;Integer, HCons&lt;Boolean, HCons&lt;Double,
+    HCons&lt;String, HCons&lt;Integer[], HNil>>>>>> two = append(one);
+
+// реальный код
+List&lt;Integer> integers = new ArrayList&lt;Integer>();
+Map&lt;List&lt;Integer>,Map&lt;Pair&lt;String,Integer>,List&lt;String>>>> integers = buildMap();
+
+            </pre>
+            <em class="notes">В Java никогда не будет вывода типов
+                для инициализации переменных,
+                последняя попытка была зарублена в 2001</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(4000px, 4900px, 0px) rotateX(180deg) rotateY(0deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-12" class="step future" step="12" data-x="4100" data-y="5000" data-scale="1" data-rotate-z="90"
+             data-rotate-x="180">
+            <h2>Вкратце про ФП</h2>
+            <h3>Макросы</h3>
+            <pre class="prettyprint">
+import scalikejdbc._, SQLInterpolation._
+
+val id = 123
+val member = <span class="hov">sql"select id, name from members where id = ${id}"</span>
+            .map(rs ⇒ Member(rs)).single.apply()
+            </pre>
+            <em class="notes">В Java популярна
+                генерация байт-кода O_o</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(4000px, 3700px, 0px) rotateX(180deg) rotateY(0deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             class="step future" step="13" id="thequestion" data-x="4000" data-y="3700" data-scale="1"
+             data-rotate-z="90" data-rotate-x="180">
+            <h2>Вкратце про ФП</h2>
+            <h3>Оптимизация хвостовой рекурсии</h3>
+            <pre class="prettyprint">
+// TCO
+<em>@tailrec</em> def server(request: Request): Boolean = {
+    if (request.isStop) true
+    else server(request.getNew())
+}
+// при компиляции будет сгенерирован while
+            </pre>
+            <em class="notes">В Java не поддерживается</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(1500px, 3700px, 0px) rotateX(180deg) rotateY(180deg) rotateZ(90deg) scale(3); transform-style: preserve-3d;"
+             id="step-14" class="step future" step="14" data-rotate-y="180" data-scale="3" data-x="1500" data-y="3700"
+             data-rotate-z="90" data-rotate-x="180">
+            <h2>Так как насчёт ФП в Java?</h2>
+            <p><img src="files/grumpy-cat-says-no.jpg"/></p>
+            <em class="notes">Трудно и ресурсоёмко.
+                Но разбавлять императивный код можно и нужно</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(-1500px, 3700px, 0px) rotateX(180deg) rotateY(180deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-15" class="step future" step="15" data-x="-1500" data-scale="1" data-y="3700" data-rotate-z="90"
+             data-rotate-x="180" data-rotate-y="180">
+            <h2>Обобщённое программирование</h2>
+            <pre class="prettyprint">
+
+def map[B, That](f: A => B)
+                (implicit bf: CanBuildFrom[Repr, B, That]): That
+// сохраняет форму коллекции
+val list = List("a", "b").map(f) // immutable list
+val array = Array(1, 2, 3).map(g) // mutable array
+
+// for comprehension работает с чем-угодно
+// коллекции, Either, Option, Future, Try, ...
+val table = for {
+    n <- array
+    s <- list
+} yield (s + n.toString)
+
+// затравка для любопытных
+trait MyTrait { type A }
+            </pre>
+            <em class="notes">В Java такое очень ограничено.</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(-1500px, 2500px, 0px) rotateX(180deg) rotateY(180deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-16" class="step future" step="16" data-y="2500" data-x="-1500" data-scale="1" data-rotate-z="90"
+             data-rotate-x="180" data-rotate-y="180">
+            <h2>Scala быстрее развивается</h2>
+            <h3>Период январь 2010 .. март 2014</h3>
+            <ul>
+                <li>java 8</li>
+                <li>scala-2.8 до scala-2.11-RC4</li>
+            </ul>
+            За это время Scala получила обновлённую
+            библиотеку коллекций, плоские типы,
+            implicits, интерполяцию в строках,
+            библиотека асинхронных компонентов,
+            akka, тип Dynamic, новый паттерн-матчинг,
+            макросы.
+
+            <em class="notes">У Java много наследия и
+                авторы очень консервативны</em>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(-1500px, 1300px, 0px) rotateX(180deg) rotateY(180deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-17" class="step future" step="17" data-x="-1500" data-y="1300" data-scale="1" data-rotate-z="90"
+             data-rotate-x="180" data-rotate-y="180">
+            <h2>Scala портабельнее</h2>
+            <ul>
+                <li>Работает на JVM 1.5 .. 1.8</li>
+                <li>Просто ещё одна библиотека с точки зрения JVM</li>
+                <li>Scala + Android = scaloid</li>
+            </ul>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(-1500px, 100px, 0px) rotateX(180deg) rotateY(180deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-18" class="step future" step="18" data-x="-1500" data-y="100" data-scale="1" data-rotate-z="90"
+             data-rotate-x="180" data-rotate-y="180">
+            <h2>Scala - источник новых идей</h2>
+            Сообщества исповедуют разные цели
+            <ul>
+                <li>Scala - основная ценность скалы - это продуктивность,
+                    тайм-ту-маркет, большинство фич подогнаны так,
+                    чтобы покрыть наибольшее количество задач наиболее
+                    эффективным для этих задач способом, при этом
+                    сохранив статическую типизацию.
+                </li>
+                <li>Java - основная ценность - это всепроникновение и
+                    консерватизм, Java должна быть понятна любому
+                    школьнику и Java должна поддерживать
+                    старый унаследованный код.
+                </li>
+            </ul>
+<pre class="prettyprint">
+    // Идеальный Scala-код
+    1.node(2.leaf, 3.node(4.leaf)) // tree
+</pre>
+<pre class="prettyprint">
+    // Идеальный Java-код
+    /**
+     * Convenient proxy factory bean superclass
+     * for proxy factory beans that create only singletons.
+     */
+    class AbstractSingletonProxyFactoryBean { ... }
+</pre>
+        </div>
+
+        <div style="position: absolute; transform: translate(-50%, -50%) translate3d(0px, 2500px, 4000px) rotateX(90deg) rotateY(180deg) rotateZ(90deg) scale(1); transform-style: preserve-3d;"
+             id="step-19" class="step future" step="19" data-x="0" data-y="2500" data-z="4000" data-rotate-x="90"
+             data-scale="1" data-rotate-z="90" data-rotate-y="180">
+            <h2>Scala - источник новых идей</h2>
+            Откуда черпать?
+            <ul>
+                <li><a href="https://www.coursera.org/course/progfun‎">Functional Programming Principles in Scala</a></li>
+                <li><a href="https://www.coursera.org/course/reactive‎">Coursera: Reactive programming in Scala</a></li>
+                <li>Книга Programming in Scala (M.Odersky, L.Spoon, B.Venners)</li>
+                <li><a href="http://brenocon.com/scalacheat/">Scala syntax cheat sheet</a></li>
+                <li>http://twitter.github.io/scala_school/</li>
+                <li>Scala collections library</li>
+                <li>Play! framework v2</li>
+                <li>Akka</li>
+                <li>Slick, ScalikeJdbc</li>
+                <li>ScalaNLP: Breeze and Epic</li>
+                <li>Twitter: Algebird, Finagle, Cossovary, Util etc.</li>
+                <li>Big data: Spark and Shark, Scoobi, Scalding, Scrunch</li>
+                <li><a href="http://www.kogics.net/sf:kojo">Kojo</a></li>
+                <li>И много-много всего другого</li>
+            </ul>
+            <em class="notes">http://docs.scala-lang.org/style/</em>
+        </div>
+    </div>
+</div>
+<div class="hide" id="hovercraft-help">
+    <table>
+        <tbody>
+        <tr>
+            <th>Space</th>
+            <td>Forward</td>
+        </tr>
+        <tr>
+            <th>Left, Down, Page Down</th>
+            <td>Next slide</td>
+        </tr>
+        <tr>
+            <th>Right, Up, Page Up</th>
+            <td>Previous slide</td>
+        </tr>
+        <tr>
+            <th>P</th>
+            <td>Open presenter console</td>
+        </tr>
+        <tr>
+            <th>H</th>
+            <td>Toggle this help</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="files/impress.js"></script>
+<script type="text/javascript" src="files/impressConsole.js"></script>
+<script type="text/javascript" src="files/hovercraft.js"></script>
+</body>
+</html>

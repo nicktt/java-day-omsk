@@ -1,0 +1,61 @@
+
+.step {
+    width: 1000px;
+    text-align: left;
+}
+
+.impress-supported .fallback-message,
+
+.notes {
+    font-size: 110%;
+    color: #660000;
+}
+
+
+/* Help popup */
+
+#hovercraft-help {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    color: #EEEEEE;
+    font-size: 50%;
+    left: 2em;
+    bottom: 2em;
+    width: 26em;
+    border-radius: 1em;
+    padding: 1em;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    z-index: 100;
+    display: block;
+    font-family: "Lucida Grande", Helvetica, sans-serif;
+}
+
+.impress-enabled #hovercraft-help.hide {
+    display: none;
+}
+
+#hovercraft-help.disabled {
+    display: none;
+}
+
+.prettyprint {
+    font-weight: bold;
+    /* font-family: Menlo,Monaco,Courier; */
+    /*font-size: 90%;*/
+}
+
+.about-me {
+    padding-left: 5%;
+    text-align: left;
+    font-size: 90%;
+}
+.notes {
+    font-family: Courier, monospace;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.hov:hover {
+//  font-weight: bold;
+}
