@@ -59,3 +59,7 @@
 .hov:hover {
 //  font-weight: bold;
 }
+
+a:link {
+  color:#FF0000;
+}
